@@ -1,4 +1,4 @@
-from urlparse import urljoin
+from urllib import parse
 
 from behave import *
 
@@ -23,7 +23,7 @@ def any_startpoint(context):
 
 @given(u'the user accesses the url "{url}"')
 def the_user_accesses_the_url(context, url):
-    full_url = urljoin(context.config.server_url, url)
+    full_url = parse(context.config.server_url, url)
     context.browser.visit(full_url)
 
 

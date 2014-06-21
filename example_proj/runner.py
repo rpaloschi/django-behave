@@ -1,3 +1,4 @@
+from selenium import webdriver
 from django_behave.runner import DjangoBehaveTestCase, DjangoBehaveTestSuiteRunner
 
 

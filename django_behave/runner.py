@@ -92,7 +92,7 @@ def parse_argv(argv, option_info):
     new_argv = ["behave",]
     our_opts = {"browser": None}
 
-    for index in xrange(len(argv)):
+    for index in range(len(argv)):
         # If it's a behave option AND is the long version (starts with '--'),
         # then proceed to save the information.  If it's not a behave option
         # (which means it's most likely a Django test option), we ignore it.
@@ -119,7 +119,7 @@ class DjangoBehaveTestCase(LiveServerTestCase):
         super(DjangoBehaveTestCase, self).__init__(**kwargs)
 
     def get_features_dir(self):
-        if isinstance(self.features_dir, basestring):
+        if isinstance(self.features_dir, str):
             return [self.features_dir]
         return self.features_dir
 
@@ -151,9 +151,9 @@ class DjangoBehaveTestCase(LiveServerTestCase):
         runner = BehaveRunner(self.behave_config)
         try:
             failed = runner.run()
-        except ParserError, e:
+        except ParserError as e:
             sys.exit(str(e))
-        except ConfigError, e:
+        except ConfigError as e:
             sys.exit(str(e))
 
         try:
@@ -206,7 +206,7 @@ class DjangoBehaveTestSuiteRunner(BaseRunner):
         # always get all features for given apps (for convenience)
         for label in test_labels:
             if '.' in label:
-                print "Ignoring label with dot in: %s" % label
+                print("Ignoring label with dot in: %s" % label)
                 continue
             app = get_app(label)
 
